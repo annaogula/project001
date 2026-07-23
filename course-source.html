@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Баланс на тарелке — практический курс</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { margin: 0; background: #d9d8d2; color: #18211e; font-family: Arial, Helvetica, sans-serif; }
+    .page { position: relative; width: 210mm; height: 297mm; margin: 10mm auto; overflow: hidden; background: #fffdf8; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    .pad { padding: 18mm 18mm 15mm; }
+    .cream { background: #f4f1e9; }
+    .forest { background: #173f35; color: #fffdf8; }
+    .sage { background: #dce6d7; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; color: #173f35; }
+    .forest h1, .forest h2 { color: #fffdf8; }
+    h1 { font-size: 38pt; line-height: 1.02; letter-spacing: -1.7px; }
+    h2 { margin-bottom: 8mm; font-size: 27pt; line-height: 1.08; letter-spacing: -1px; }
+    h3 { margin-bottom: 2mm; color: #173f35; font-size: 12pt; }
+    p, li { font-size: 9.5pt; line-height: 1.55; }
+    .lead { font-size: 13pt; line-height: 1.45; }
+    .muted { color: #65706c; }
+    .eyebrow { margin-bottom: 4mm; color: #f16445; font-size: 8pt; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    .forest .eyebrow { color: #dce6d7; }
+    .page-number { position: absolute; right: 14mm; bottom: 9mm; color: #87918d; font-size: 8pt; }
+    .brand { position: absolute; left: 14mm; bottom: 9mm; color: #87918d; font-size: 8pt; font-weight: bold; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+    .card { padding: 5mm; border: 1px solid rgba(23,63,53,.13); border-radius: 5mm; background: #fff; }
+    .card.sage { background: #dce6d7; }
+    .card.coral { border: none; background: #f16445; color: #fff; }
+    .card.forest { border: none; background: #173f35; color: #fff; }
+    .number { display: inline-grid; width: 8mm; height: 8mm; margin-bottom: 3mm; place-items: center; border-radius: 50%; background: #173f35; color: #fff; font-size: 8pt; font-weight: bold; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { position: relative; margin-bottom: 3mm; padding-left: 8mm; }
+    .checklist li::before { position: absolute; left: 0; top: .4mm; content: "✓"; display: grid; width: 5mm; height: 5mm; place-items: center; border-radius: 50%; background: #dce6d7; color: #173f35; font-size: 7pt; font-weight: bold; }
+    table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+    th { padding: 3mm; background: #173f35; color: #fff; text-align: left; }
+    td { padding: 3mm; border-bottom: 1px solid #dce1dd; vertical-align: top; line-height: 1.4; }
+    tr:nth-child(even) td { background: #f4f1e9; }
+    .note { padding: 4mm 5mm; border-left: 3px solid #f16445; background: #f7e7e1; font-size: 8.5pt; line-height: 1.5; }
+    .plate { position: relative; width: 115mm; height: 115mm; margin: 7mm auto; border: 3mm solid #fff; border-radius: 50%; overflow: hidden; box-shadow: 0 6mm 12mm rgba(23,63,53,.14); }
+    .plate .veg { position: absolute; inset: 0 50% 0 0; display: grid; place-items: center; background: #9cb795; color: #173f35; }
+    .plate .protein { position: absolute; inset: 0 0 50% 50%; display: grid; place-items: center; background: #f0a18e; color: #713424; }
+    .plate .carbs { position: absolute; inset: 50% 0 0 50%; display: grid; place-items: center; background: #e9d39f; color: #5e4c21; }
+    .plate strong { max-width: 35mm; text-align: center; font-size: 11pt; line-height: 1.3; }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cover-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(23,63,53,.96) 0%, rgba(23,63,53,.84) 47%, rgba(23,63,53,.1) 78%); }
+    .cover-copy { position: relative; z-index: 2; width: 120mm; padding: 24mm 0 0 18mm; color: #fff; }
+    .cover-copy h1 { margin: 14mm 0 7mm; color: #fff; font-size: 44pt; }
+    .pill { display: inline-block; padding: 2.5mm 4mm; border-radius: 20mm; background: #f16445; color: #fff; font-size: 8pt; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+    .formula { display: flex; align-items: center; justify-content: space-between; margin: 8mm 0; }
+    .formula span { display: grid; width: 41mm; height: 27mm; place-items: center; border-radius: 5mm; background: #dce6d7; color: #173f35; font-size: 12pt; font-weight: bold; text-align: center; }
+    .formula b { color: #f16445; font-size: 20pt; }
+    .lines { height: 8mm; border-bottom: 1px solid #b9c1bd; }
+    @media print {
+      body { background: transparent; }
+      .page { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <img class="hero-image" src="assets/balanced-plate-hero.png" alt="" />
+    <div class="cover-shade"></div>
+    <div class="cover-copy">
+      <span class="pill">Практический курс</span>
+      <h1>Баланс<br />на тарелке</h1>
+      <p class="lead" style="max-width:90mm;color:#dce6d7">Как собирать полноценную еду без весов, подсчёта калорий и строгих запретов</p>
+      <p style="margin-top:70mm;font-size:9pt;color:rgba(255,255,255,.65)">Пособие для повседневной жизни · 2026</p>
+    </div>
+  </section>
+
+  <section class="page pad cream">
+    <p class="eyebrow">Перед началом</p>
+    <h2>Как пользоваться курсом</h2>
+    <p class="lead">Вам не нужно менять всё питание за один день. Прочитайте пособие один раз, а затем выберите один приём пищи и примените к нему формулу тарелки.</p>
+    <div class="grid-3" style="margin-top:10mm">
+      <div class="card"><span class="number">1</span><h3>Посмотрите</h3><p class="muted">Что уже есть на тарелке? Не оценивайте — просто назовите компоненты.</p></div>
+      <div class="card"><span class="number">2</span><h3>Добавьте</h3><p class="muted">Чего не хватает для баланса: овощей, белка, гарнира или жиров?</p></div>
+      <div class="card"><span class="number">3</span><h3>Проверьте</h3><p class="muted">Как меняются сытость, энергия и удовольствие после еды?</p></div>
+    </div>
+    <div class="card sage" style="margin-top:8mm">
+      <h3>Главная идея</h3>
+      <p style="margin:0">Сбалансированная тарелка — ориентир, а не экзамен. Пропорции могут меняться в зависимости от аппетита, активности, доступных продуктов и контекста.</p>
+    </div>
+    <h3 style="margin-top:10mm">Мягкий план на 7 дней</h3>
+    <ul class="checklist">
+      <li><b>Дни 1–2:</b> наблюдайте за привычными тарелками, ничего не меняя.</li>
+      <li><b>Дни 3–4:</b> добавляйте овощи или фрукты к одному приёму пищи.</li>
+      <li><b>Дни 5–6:</b> проверьте источник белка и размер гарнира.</li>
+      <li><b>День 7:</b> соберите три варианта тарелки из продуктов, которые любите.</li>
+    </ul>
+    <div class="note" style="margin-top:8mm"><b>Важно.</b> Материал носит образовательный характер и не заменяет персональную консультацию врача или диетолога. При заболеваниях ЖКТ, почек, диабете, аллергиях, беременности или назначенной лечебной диете используйте рекомендации специалиста.</div>
+    <span class="brand">БАЛАНС.</span><span class="page-number">02</span>
+  </section>
+
+  <section class="page pad">
+    <p class="eyebrow">Урок 1</p>
+    <h2>Почему полноценная еда насыщает</h2>
+    <p class="lead">Сытость — это не только объём еды. На неё влияют состав, вкус, темп приёма пищи, сон, стресс и время с прошлого приёма еды.</p>
+    <div class="grid-2" style="margin-top:8mm">
+      <div class="card sage"><h3>Белок</h3><p>Помогает дольше сохранять сытость и участвует в обновлении тканей. Источники: рыба, мясо, яйца, молочные продукты, бобовые, тофу.</p></div>
+      <div class="card"><h3>Клетчатка</h3><p>Добавляет объём и поддерживает пищеварение. Источники: овощи, фрукты, бобовые, цельные крупы, семена.</p></div>
+      <div class="card"><h3>Углеводы</h3><p>Основной доступный источник энергии. Предпочтение цельным продуктам не означает запрет хлеба, пасты или десертов.</p></div>
+      <div class="card coral"><h3 style="color:white">Жиры</h3><p>Помогают усваивать жирорастворимые витамины и делают еду вкуснее. Важны умеренность и разнообразие источников.</p></div>
+    </div>
+    <h3 style="margin-top:9mm">Почему «салат и кофе» часто не работают</h3>
+    <p>В салате может быть много объёма, но мало энергии и белка. Через короткое время организм закономерно попросит ещё еды. Это не отсутствие силы воли — это недостаточно полный приём пищи.</p>
+    <div class="formula">
+      <span>объём<br />и клетчатка</span><b>+</b><span>белок</span><b>+</b><span>энергия<br />из гарнира</span>
+    </div>
+    <p class="note"><b>Практика.</b> После следующего приёма пищи оцените сытость через 30 минут и через 2–3 часа по шкале от 1 до 10. Не стремитесь к «правильной» цифре — собирайте наблюдения.</p>
+    <span class="brand">БАЛАНС.</span><span class="page-number">03</span>
+  </section>
+
+  <section class="page pad sage">
+    <p class="eyebrow">Урок 2</p>
+    <h2>Формула ½ + ¼ + ¼</h2>
+    <div class="plate">
+      <div class="veg"><strong>½<br />овощи<br />и зелень</strong></div>
+      <div class="protein"><strong>¼<br />белок</strong></div>
+      <div class="carbs"><strong>¼<br />гарнир</strong></div>
+    </div>
+    <div class="grid-3">
+      <div><h3>½ овощи</h3><p>Свежие, запечённые, тушёные, замороженные — способ не принципиален. Часть можно заменить фруктами.</p></div>
+      <div><h3>¼ белок</h3><p>Порция примерно с ладонь — только визуальный ориентир, а не строгая норма.</p></div>
+      <div><h3>¼ гарнир</h3><p>Крупы, картофель, паста, хлеб, кукуруза. При высокой активности порция может быть больше.</p></div>
+    </div>
+    <div class="card" style="margin-top:7mm">
+      <h3>Плюс к тарелке</h3>
+      <p style="margin:0"><b>Жиры:</b> масло, орехи, семена, авокадо, сыр или жирная рыба. <b>Напиток:</b> вода по жажде. <b>Вкус:</b> специи, соусы и любимые добавки помогают получать удовольствие и придерживаться привычки.</p>
+    </div>
+    <p class="muted" style="margin-top:6mm;font-size:8.5pt">Формула описывает пропорции в среднем, а не обязательную геометрию каждого блюда. Суп, рагу, пасту или сэндвич можно мысленно разложить на те же компоненты.</p>
+    <span class="brand">БАЛАНС.</span><span class="page-number">04</span>
+  </section>
+
+  <section class="page pad">
+    <p class="eyebrow">Урок 3</p>
+    <h2>Конструктор продуктов</h2>
+    <table>
+      <thead><tr><th>Овощи и фрукты</th><th>Белок</th><th>Гарнир</th><th>Жиры и вкус</th></tr></thead>
+      <tbody>
+        <tr><td>Брокколи<br />Цветная капуста<br />Морковь</td><td>Курица<br />Индейка<br />Постная говядина</td><td>Гречка<br />Овсянка<br />Булгур</td><td>Оливковое масло<br />Орехи<br />Семена</td></tr>
+        <tr><td>Помидоры<br />Огурцы<br />Перец</td><td>Рыба<br />Морепродукты<br />Яйца</td><td>Рис<br />Киноа<br />Кускус</td><td>Авокадо<br />Тахини<br />Песто</td></tr>
+        <tr><td>Капуста<br />Свёкла<br />Тыква</td><td>Творог<br />Йогурт<br />Сыр</td><td>Картофель<br />Батат<br />Кукуруза</td><td>Сметана<br />Сыр<br />Йогуртовый соус</td></tr>
+        <tr><td>Замороженные смеси<br />Квашеные овощи<br />Зелень</td><td>Чечевица<br />Фасоль<br />Нут</td><td>Цельнозерновой хлеб<br />Паста<br />Лаваш</td><td>Хумус<br />Оливки<br />Льняное семя</td></tr>
+        <tr><td>Яблоки<br />Ягоды<br />Цитрусовые</td><td>Тофу<br />Темпе<br />Соевый фарш</td><td>Перловка<br />Пшено<br />Хлебцы</td><td>Горчица<br />Соевый соус<br />Специи</td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="margin-top:8mm">
+      <div class="card sage">
+        <h3>Замороженное — нормально</h3>
+        <p style="margin:0">Овощи, ягоды и рыба из морозилки экономят время и остаются полноценной частью рациона.</p>
+      </div>
+      <div class="card">
+        <h3>Консервы — тоже</h3>
+        <p style="margin:0">Фасоль, нут, тунец, кукуруза и томаты без сложной готовки помогают собрать еду за минуты.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:8mm">Моя базовая пятёрка</h3>
+    <p class="muted">Запишите по одному продукту из каждой категории, который легко купить и приятно есть.</p>
+    <div class="lines"></div><div class="lines"></div><div class="lines"></div>
+    <span class="brand">БАЛАНС.</span><span class="page-number">05</span>
+  </section>
+
+  <section class="page pad cream">
+    <p class="eyebrow">Урок 4</p>
+    <h2>Завтрак и перекусы</h2>
+    <p class="lead">Утром не обязательно есть «завтраковые» продукты. Работает та же логика: источник белка + углеводы + овощи или фрукты + немного жира.</p>
+    <div class="grid-2" style="margin-top:7mm">
+      <div class="card"><h3>Сладкий завтрак</h3><p>Овсянка + густой йогурт + ягоды + орехи. Белок и жиры делают кашу более сытной.</p></div>
+      <div class="card"><h3>Солёный завтрак</h3><p>Яйца + хлеб + овощи + авокадо. Размер порций определяйте по аппетиту.</p></div>
+      <div class="card"><h3>За 2 минуты</h3><p>Творог или йогурт + банан + мюсли + семена. Подходит и как перекус.</p></div>
+      <div class="card"><h3>В дорогу</h3><p>Сэндвич с индейкой или хумусом + овощи + фрукт. Удобно собрать заранее.</p></div>
+    </div>
+    <h3 style="margin-top:9mm">Когда нужен перекус</h3>
+    <ul class="checklist">
+      <li>Между основными приёмами пищи большой интервал.</li>
+      <li>Предстоит тренировка или активный день.</li>
+      <li>Предыдущий приём пищи был небольшим.</li>
+      <li>Вы чувствуете физический голод — это уже достаточная причина.</li>
+    </ul>
+    <div class="card forest" style="margin-top:7mm">
+      <h3 style="color:#dce6d7">Формула сытного перекуса</h3>
+      <p style="margin:0">Выберите 2 компонента: <b>углеводы или фрукт + белок или жир.</b><br />Примеры: яблоко + орехи; хлебцы + творог; банан + йогурт; овощи + хумус.</p>
+    </div>
+    <p class="note" style="margin-top:7mm"><b>Кофе — напиток, а не приём пищи.</b> Если утром нет аппетита, начните с небольшого варианта и понаблюдайте, как это влияет на вечерний голод.</p>
+    <span class="brand">БАЛАНС.</span><span class="page-number">06</span>
+  </section>
+
+  <section class="page pad">
+    <p class="eyebrow">Урок 5</p>
+    <h2>30 сочетаний без рецепта</h2>
+    <div class="grid-2">
+      <div>
+        <h3>С птицей и мясом</h3>
+        <ol>
+          <li>Курица + гречка + овощной салат</li>
+          <li>Индейка + рис + запечённые овощи</li>
+          <li>Тефтели + картофель + капустный салат</li>
+          <li>Говядина + булгур + овощи гриль</li>
+          <li>Курица + паста + брокколи</li>
+          <li>Лаваш + индейка + овощи + соус</li>
+        </ol>
+        <h3>С рыбой и яйцами</h3>
+        <ol start="7">
+          <li>Лосось + киноа + зелёный салат</li>
+          <li>Тунец + картофель + овощи</li>
+          <li>Белая рыба + рис + стручковая фасоль</li>
+          <li>Омлет + хлеб + томаты</li>
+          <li>Яйца + гречка + огурцы</li>
+          <li>Креветки + кускус + овощи</li>
+        </ol>
+        <h3>Без мяса</h3>
+        <ol start="13">
+          <li>Чечевица + рис + салат</li>
+          <li>Нут + булгур + печёный перец</li>
+          <li>Тофу + лапша + овощная смесь</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Без мяса — продолжение</h3>
+        <ol start="16">
+          <li>Фасоль + картофель + капуста</li>
+          <li>Фалафель + пита + овощи + тахини</li>
+          <li>Творог + хлеб + овощи + оливки</li>
+        </ol>
+        <h3>Максимально быстро</h3>
+        <ol start="19">
+          <li>Тунец + хлеб + овощная нарезка</li>
+          <li>Хумус + лаваш + овощи + яйцо</li>
+          <li>Замороженные овощи + рис + тофу</li>
+          <li>Фасоль из банки + кускус + томаты</li>
+          <li>Готовая курица + хлеб + салатный микс</li>
+          <li>Йогурт + овсянка + фрукт + орехи</li>
+        </ol>
+        <h3>Знакомые блюда</h3>
+        <ol start="25">
+          <li>Борщ + мясо/фасоль + хлеб</li>
+          <li>Паста болоньезе + салат</li>
+          <li>Плов + большая порция овощей</li>
+          <li>Вареники + творог/йогурт + салат</li>
+          <li>Сырники + йогурт + ягоды</li>
+          <li>Суп + сэндвич с белковой начинкой</li>
+        </ol>
+      </div>
+    </div>
+    <div class="note" style="margin-top:5mm"><b>Не нужно готовить четыре отдельных блюда.</b> Компоненты могут быть смешаны: в супе, рагу, боуле, пасте или сэндвиче. Проверяйте общую картину.</div>
+    <span class="brand">БАЛАНС.</span><span class="page-number">07</span>
+  </section>
+
+  <section class="page pad sage">
+    <p class="eyebrow">Урок 6</p>
+    <h2>Покупки без лишнего</h2>
+    <p class="lead">Удобный запас важнее идеального меню. Выберите 2–3 продукта из каждой группы — этого достаточно для десятков комбинаций.</p>
+    <div class="grid-2" style="margin-top:7mm">
+      <div class="card">
+        <h3>Всегда дома</h3>
+        <ul class="checklist">
+          <li>2 крупы или паста</li>
+          <li>Бобовые или рыба в банке</li>
+          <li>Замороженные овощи</li>
+          <li>Масло, орехи или семена</li>
+          <li>Специи и любимый соус</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Покупать раз в неделю</h3>
+        <ul class="checklist">
+          <li>2–3 свежих овоща</li>
+          <li>Фрукты или ягоды</li>
+          <li>Яйца и/или молочные продукты</li>
+          <li>Рыба, птица, мясо или тофу</li>
+          <li>Хлеб или лаваш</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="margin-top:9mm">Мой список</h3>
+    <table>
+      <thead><tr><th>Овощи и фрукты</th><th>Белок</th><th>Гарнир</th><th>Добавки</th></tr></thead>
+      <tbody>
+        <tr><td style="height:20mm"></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:20mm"></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:20mm"></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:7mm"><b>Сначала используйте то, что уже есть.</b> Перед магазином загляните в холодильник и морозилку. Планируйте блюда вокруг продуктов, которые нужно съесть раньше.</p>
+    <span class="brand">БАЛАНС.</span><span class="page-number">08</span>
+  </section>
+
+  <section class="page pad">
+    <p class="eyebrow">Урок 7</p>
+    <h2>Баланс вне дома</h2>
+    <div class="grid-2">
+      <div class="card sage"><h3>В кафе</h3><p>Ищите блюдо с понятным источником белка и гарниром. Овощи можно заказать салатом или гарниром отдельно.</p></div>
+      <div class="card"><h3>Доставка</h3><p>К пицце добавьте салат; к супу — сэндвич или белковую закуску; к суши — эдамаме или салат.</p></div>
+      <div class="card"><h3>В поездке</h3><p>Сочетайте доступное: йогурт + банан + орехи; сэндвич + овощи; сыр + хлеб + фрукт.</p></div>
+      <div class="card coral"><h3 style="color:white">В гостях</h3><p>Вы не обязаны собирать идеальные пропорции. Выберите то, что хочется, добавьте доступные овощи и остановитесь на комфортной сытости.</p></div>
+    </div>
+    <h3 style="margin-top:9mm">Метод «добавить, а не запретить»</h3>
+    <table>
+      <thead><tr><th>Если хочется...</th><th>Можно добавить...</th></tr></thead>
+      <tbody>
+        <tr><td>Пиццу</td><td>Салат или овощную нарезку; при желании — белковую закуску</td></tr>
+        <tr><td>Пасту</td><td>Курицу, тунца, бобовые или сыр + овощи</td></tr>
+        <tr><td>Картофель</td><td>Рыбу, яйца или мясо + салат</td></tr>
+        <tr><td>Десерт</td><td>Ничего обязательного. Ешьте его с удовольствием; если голодны — сначала полноценную еду</td></tr>
+      </tbody>
+    </table>
+    <div class="card forest" style="margin-top:8mm">
+      <h3 style="color:#dce6d7">Правило одного решения</h3>
+      <p style="margin:0">Не пытайтесь одновременно выбрать «самое полезное», минимальную калорийность и идеальный размер порции. Спросите: <b>«Как сделать этот приём пищи чуть более полноценным?»</b></p>
+    </div>
+    <span class="brand">БАЛАНС.</span><span class="page-number">09</span>
+  </section>
+
+  <section class="page pad cream">
+    <p class="eyebrow">Навык</p>
+    <h2>Голод, сытость и гибкость</h2>
+    <p class="lead">Формула тарелки помогает со структурой, но не заменяет сигналы тела. Ваш аппетит закономерно меняется день ото дня.</p>
+    <table style="margin-top:7mm">
+      <thead><tr><th style="width:17%">Уровень</th><th>Как может ощущаться</th><th>Что можно сделать</th></tr></thead>
+      <tbody>
+        <tr><td><b>1–2</b><br />сильный голод</td><td>Слабость, раздражение, сложно выбирать и есть медленно</td><td>Поесть как можно скорее; не требовать от себя идеального решения</td></tr>
+        <tr><td><b>3–4</b><br />умеренный голод</td><td>Пустота в желудке, мысли о еде, снижение концентрации</td><td>Удобный момент для полноценного приёма пищи</td></tr>
+        <tr><td><b>5–6</b><br />нейтрально</td><td>Комфорт, еда не занимает внимание</td><td>Можно продолжить дела или закончить еду</td></tr>
+        <tr><td><b>7–8</b><br />сытость</td><td>Удовлетворение, ощущение наполненности без тяжести</td><td>Комфортная точка завершения для многих, но не строгая цель</td></tr>
+        <tr><td><b>9–10</b><br />переполнение</td><td>Тяжесть, сонливость, дискомфорт</td><td>Не компенсировать голоданием; сделать вывод о контексте и двигаться дальше</td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="margin-top:8mm">
+      <div class="card sage"><h3>Ешьте достаточно</h3><p>Систематическое недоедание усиливает мысли о еде и вероятность переедания позже.</p></div>
+      <div class="card"><h3>Оставляйте место удовольствию</h3><p>Вкус — полноценная часть питания. Удовлетворённость помогает завершить приём пищи.</p></div>
+    </div>
+    <p class="note" style="margin-top:8mm"><b>Наблюдение вместо оценки.</b> «Я переела, потому что долго не ела» полезнее, чем «у меня нет силы воли». Первое даёт информацию для следующего раза.</p>
+    <span class="brand">БАЛАНС.</span><span class="page-number">10</span>
+  </section>
+
+  <section class="page pad">
+    <p class="eyebrow">Шаблон</p>
+    <h2>Моя неделя без жёсткого меню</h2>
+    <p class="muted">Запланируйте не рецепты, а комбинации. Оставьте 1–2 окна для доставки, остатков или спонтанного выбора.</p>
+    <table style="margin-top:7mm">
+      <thead><tr><th style="width:15%">День</th><th>Основная комбинация</th><th>Быстрый запасной вариант</th></tr></thead>
+      <tbody>
+        <tr><td><b>Пн</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Вт</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Ср</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Чт</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Пт</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Сб</b></td><td style="height:19mm"></td><td></td></tr>
+        <tr><td><b>Вс</b></td><td style="height:19mm"></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="card sage" style="margin-top:7mm">
+      <h3>Мини-подготовка на 45 минут</h3>
+      <p style="margin:0">Сварите одну крупу, подготовьте один источник белка, вымойте овощи, смешайте соус. Не обязательно готовить всю еду заранее — достаточно сократить количество решений.</p>
+    </div>
+    <span class="brand">БАЛАНС.</span><span class="page-number">11</span>
+  </section>
+
+  <section class="page pad forest">
+    <p class="eyebrow">Финальная практика</p>
+    <h2>Ваш личный план</h2>
+    <p class="lead" style="color:#dce6d7">Выберите изменения, которые реально повторить. Устойчивое «достаточно хорошо» полезнее редкого идеала.</p>
+    <div class="grid-2" style="margin-top:9mm">
+      <div class="card" style="color:#18211e">
+        <h3>3 любимые тарелки</h3>
+        <div class="lines"></div><div class="lines"></div><div class="lines"></div>
+      </div>
+      <div class="card" style="color:#18211e">
+        <h3>3 быстрых варианта</h3>
+        <div class="lines"></div><div class="lines"></div><div class="lines"></div>
+      </div>
+    </div>
+    <div class="card sage" style="margin-top:6mm;color:#18211e">
+      <h3>Одно действие на эту неделю</h3>
+      <p class="muted">Например: добавлять овощи к обеду; держать в морозилке овощную смесь; не пропускать завтрак в рабочие дни.</p>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+    <div style="margin-top:12mm;padding-top:10mm;border-top:1px solid rgba(255,255,255,.18)">
+      <p class="eyebrow">Короткая проверка тарелки</p>
+      <div class="grid-2">
+        <ul class="checklist" style="color:#fff">
+          <li>Есть ли овощи или фрукты?</li>
+          <li>Есть ли заметный источник белка?</li>
+          <li>Есть ли источник энергии — гарнир или хлеб?</li>
+        </ul>
+        <ul class="checklist" style="color:#fff">
+          <li>Есть ли немного жиров?</li>
+          <li>Достаточно ли еды для моего голода?</li>
+          <li>Нравится ли мне то, что я ем?</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16mm;font-family:Georgia,serif;font-size:21pt;line-height:1.3;color:#dce6d7">Баланс — это не точка назначения.<br />Это способ заботиться о себе каждый день.</p>
+    <span class="brand" style="color:#dce6d7">БАЛАНС.</span><span class="page-number" style="color:#dce6d7">12</span>
+  </section>
+</body>
+</html>

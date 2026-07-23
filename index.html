@@ -1,224 +1,346 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f7f5" />
-    <title>Мои задачи</title>
+    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="description" content="Практический мини-курс о сбалансированном питании без подсчёта калорий и строгих ограничений." />
+    <title>Баланс на тарелке — практический курс</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              canvas: "#f7f7f5",
-              ink: "#18181b",
-              accent: "#e85d3f",
-            },
-            boxShadow: {
-              card: "0 24px 70px -32px rgba(24, 24, 27, 0.28)",
+              cream: "#f4f1e9",
+              paper: "#fffdf8",
+              forest: "#173f35",
+              sage: "#dce6d7",
+              coral: "#f16445",
+              ink: "#18211e",
             },
             fontFamily: {
-              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              sans: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"],
+              display: ["Lora", "Georgia", "serif"],
+            },
+            boxShadow: {
+              soft: "0 24px 70px -36px rgba(23, 63, 53, .35)",
+              button: "0 14px 28px -12px rgba(241, 100, 69, .7)",
             },
           },
         },
       };
     </script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
+      @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap");
       * { -webkit-tap-highlight-color: transparent; }
-      body { min-height: 100vh; }
-      .task-row { animation: task-in 220ms ease-out both; }
-      @keyframes task-in {
-        from { opacity: 0; transform: translateY(6px); }
-        to { opacity: 1; transform: translateY(0); }
+      body { background: #f4f1e9; }
+      .noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
       }
-      .check-icon { transform: scale(0); transition: transform 160ms ease; }
-      input:checked + .checkbox-ui .check-icon { transform: scale(1); }
-      input:checked + .checkbox-ui { background: #18181b; border-color: #18181b; }
+      .cta-glow { animation: glow 2.2s ease-in-out infinite; }
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 14px 28px -12px rgba(241, 100, 69, .65); transform: translateY(0); }
+        50% { box-shadow: 0 18px 38px -9px rgba(241, 100, 69, .85); transform: translateY(-2px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .cta-glow { animation: none; }
+      }
     </style>
   </head>
-  <body class="bg-canvas font-sans text-ink antialiased selection:bg-orange-200">
-    <main class="relative flex min-h-screen items-start justify-center overflow-hidden px-4 py-12 sm:px-6 sm:py-20">
-      <div class="pointer-events-none absolute -left-24 top-16 h-64 w-64 rounded-full bg-orange-200/30 blur-3xl"></div>
-      <div class="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-stone-300/40 blur-3xl"></div>
+  <body class="font-sans text-ink antialiased selection:bg-coral/20">
+    <div class="noise pointer-events-none fixed inset-0 z-50"></div>
 
-      <section class="relative w-full max-w-2xl overflow-hidden rounded-[28px] border border-black/[0.06] bg-white shadow-card">
-        <header class="border-b border-zinc-100 px-6 pb-6 pt-7 sm:px-9 sm:pb-8 sm:pt-9">
-          <div class="mb-7 flex items-start justify-between gap-4">
-            <div>
-              <p id="today" class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400"></p>
-              <h1 class="text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">Мои задачи</h1>
-              <p class="mt-2 text-sm text-zinc-500">Один небольшой шаг за раз.</p>
+    <header class="relative z-40 border-b border-forest/10 bg-cream/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+        <a href="#" class="flex items-center gap-3 font-bold tracking-tight">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-forest text-paper">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c4-2 7-6 7-11-5 0-9 3-10 8"/><path d="M9 19C4 17 3 12 5 7c4 1 7 4 7 8"/></svg>
+          </span>
+          <span>Баланс<span class="text-coral">.</span></span>
+        </a>
+        <nav class="hidden items-center gap-7 text-sm font-medium text-forest/70 md:flex">
+          <a href="#method" class="transition hover:text-forest">Метод</a>
+          <a href="#program" class="transition hover:text-forest">Программа</a>
+          <a href="#faq" class="transition hover:text-forest">Вопросы</a>
+        </nav>
+        <a href="#signup" class="rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-forest/90">Записаться</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[.92fr_1.08fr] lg:py-24">
+          <div class="relative z-10">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-forest/10 bg-white/60 px-3 py-2 text-xs font-semibold uppercase tracking-[.14em] text-forest">
+              <span class="h-2 w-2 rounded-full bg-coral"></span>
+              Практический мини-курс
             </div>
-            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-zinc-950 text-white shadow-sm" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
+            <h1 class="font-display text-5xl font-semibold leading-[1.05] tracking-[-.045em] text-forest sm:text-6xl lg:text-[4.6rem]">
+              Еда, после которой хорошо.
+              <span class="text-coral">Без диет.</span>
+            </h1>
+            <p class="mt-7 max-w-xl text-lg leading-8 text-ink/65">
+              Научитесь собирать сбалансированную тарелку за 5 минут — без весов, подсчёта калорий и списков запрещённых продуктов.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#signup" class="cta-glow inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-coral px-7 text-base font-bold text-white transition hover:bg-[#df5437] focus:outline-none focus:ring-4 focus:ring-coral/25">
+                Купить курс за 690 ₴
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </a>
+              <span class="text-center text-xs leading-5 text-ink/50 sm:text-left">PDF сразу после регистрации<br />доступ навсегда</span>
+            </div>
+            <div class="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-forest/75">
+              <span class="flex items-center gap-2"><span class="grid h-5 w-5 place-items-center rounded-full bg-sage">✓</span> 7 коротких уроков</span>
+              <span class="flex items-center gap-2"><span class="grid h-5 w-5 place-items-center rounded-full bg-sage">✓</span> 3 практических шаблона</span>
+              <span class="flex items-center gap-2"><span class="grid h-5 w-5 place-items-center rounded-full bg-sage">✓</span> 30+ сочетаний</span>
             </div>
           </div>
 
-          <form id="task-form" class="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-2 transition focus-within:border-zinc-400 focus-within:bg-white focus-within:ring-4 focus-within:ring-zinc-100">
-            <label for="task-input" class="sr-only">Новая задача</label>
-            <input id="task-input" class="h-11 w-full bg-transparent px-3 text-[15px] font-medium outline-none placeholder:font-normal placeholder:text-zinc-400" type="text" maxlength="100" autocomplete="off" placeholder="Например, подготовить презентацию" />
-            <div class="mt-1 flex items-center justify-between border-t border-zinc-200/80 px-1 pt-2">
-              <span class="hidden pl-2 text-xs text-zinc-400 sm:inline">Enter — добавить</span>
-              <div class="ml-auto flex gap-2">
-                <button id="cancel-button" type="button" class="h-9 rounded-xl px-3 text-sm font-medium text-zinc-500 transition hover:bg-zinc-200/70 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400">Отменить</button>
-                <button type="submit" class="flex h-9 items-center gap-2 rounded-xl bg-zinc-950 px-4 text-sm font-medium text-white transition hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 active:scale-[0.98]">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                  Добавить
-                </button>
+          <div class="relative">
+            <div class="absolute -inset-5 rotate-2 rounded-[2.5rem] bg-sage"></div>
+            <img src="assets/balanced-plate-hero.png" alt="Сбалансированная тарелка с овощами, киноа и лососем" class="relative aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" />
+            <div class="absolute -bottom-6 left-4 rounded-2xl border border-white/70 bg-paper/95 p-4 shadow-soft backdrop-blur sm:left-8">
+              <p class="text-xs font-semibold uppercase tracking-[.13em] text-ink/45">Формула тарелки</p>
+              <div class="mt-2 flex items-center gap-3 text-sm font-bold text-forest">
+                <span>½ овощи</span><span class="text-coral">+</span><span>¼ белок</span><span class="text-coral">+</span><span>¼ гарнир</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-forest py-6 text-paper">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-4 px-5 text-sm sm:justify-between">
+          <span class="font-display text-xl">Не «идеально». А регулярно.</span>
+          <span class="text-paper/65">Понятно • Практично • Без крайностей</span>
+          <span class="font-semibold text-sage">Результат уже с первого приёма пищи</span>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[.18em] text-coral">Знакомо?</p>
+          <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-.035em] text-forest sm:text-5xl">Правильное питание кажется сложной работой</h2>
+        </div>
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          <article class="rounded-3xl border border-forest/10 bg-paper p-7">
+            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#f7ded7] text-coral">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <h3 class="text-lg font-bold text-forest">Нет времени</h3>
+            <p class="mt-3 text-sm leading-6 text-ink/60">Сложные рецепты и отдельная готовка для себя не помещаются в обычный день.</p>
+          </article>
+          <article class="rounded-3xl border border-forest/10 bg-paper p-7">
+            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-sage text-forest">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 16l4-4 3 3 5-7"/></svg>
+            </span>
+            <h3 class="text-lg font-bold text-forest">Слишком много правил</h3>
+            <p class="mt-3 text-sm leading-6 text-ink/60">Белки, калории, «можно» и «нельзя» — информации много, ясности всё меньше.</p>
+          </article>
+          <article class="rounded-3xl border border-forest/10 bg-paper p-7">
+            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#eee3c8] text-forest">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h10l2 6-7 12L5 9l2-6Z"/><path d="M5 9h14"/></svg>
+            </span>
+            <h3 class="text-lg font-bold text-forest">Срывы и чувство вины</h3>
+            <p class="mt-3 text-sm leading-6 text-ink/60">Жёсткие ограничения держатся недолго и мешают слышать реальные сигналы тела.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="method" class="bg-paper py-20 sm:py-28">
+        <div class="mx-auto grid max-w-6xl gap-14 px-5 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[.18em] text-coral">Одна простая система</p>
+            <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-.035em] text-forest sm:text-5xl">Тарелка — ваш новый ориентир</h2>
+            <p class="mt-6 leading-7 text-ink/60">Вы не запоминаете десятки правил. Вы смотрите на тарелку и понимаете, чего добавить, чтобы еда насыщала и давала энергию.</p>
+            <ul class="mt-8 space-y-4">
+              <li class="flex gap-4"><span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-white">1</span><p><strong class="text-forest">Половина — овощи и зелень.</strong><span class="block text-sm text-ink/55">Объём, клетчатка, цвет и разнообразие.</span></p></li>
+              <li class="flex gap-4"><span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-white">2</span><p><strong class="text-forest">Четверть — источник белка.</strong><span class="block text-sm text-ink/55">Сытость и восстановление.</span></p></li>
+              <li class="flex gap-4"><span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-forest text-xs font-bold text-white">3</span><p><strong class="text-forest">Четверть — сложные углеводы.</strong><span class="block text-sm text-ink/55">Стабильная энергия без страха перед гарниром.</span></p></li>
+            </ul>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-[2rem] bg-forest p-8 text-paper sm:row-span-2">
+              <p class="font-display text-6xl text-sage">5</p>
+              <p class="mt-2 text-xl font-bold">минут на проверку тарелки</p>
+              <p class="mt-6 text-sm leading-6 text-paper/60">Метод работает дома, в кафе, в поездке и даже когда в холодильнике «почти ничего».</p>
+            </div>
+            <div class="rounded-[2rem] bg-sage p-7">
+              <p class="text-3xl font-bold text-forest">0</p>
+              <p class="mt-1 font-semibold text-forest">запрещённых продуктов</p>
+            </div>
+            <div class="rounded-[2rem] border border-forest/10 bg-cream p-7">
+              <p class="text-3xl font-bold text-coral">30+</p>
+              <p class="mt-1 font-semibold text-forest">готовых сочетаний</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="program" class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div class="max-w-2xl">
+            <p class="text-sm font-bold uppercase tracking-[.18em] text-coral">Что внутри</p>
+            <h2 class="mt-4 font-display text-4xl font-semibold tracking-[-.035em] text-forest sm:text-5xl">От понимания к привычке</h2>
+          </div>
+          <p class="max-w-xs text-sm leading-6 text-ink/55">Проходите в своём темпе. Весь курс — один PDF, который удобно открыть с телефона.</p>
+        </div>
+        <div class="mt-12 grid gap-3">
+          <article class="group grid gap-4 rounded-2xl border border-forest/10 bg-paper p-5 transition hover:border-forest/25 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center">
+            <span class="font-display text-3xl text-coral">01</span><div><h3 class="font-bold text-forest">Почему тарелка работает</h3><p class="mt-1 text-sm text-ink/55">Голод, насыщение и энергия простыми словами</p></div><span class="text-xs font-semibold text-forest/40">10 минут</span>
+          </article>
+          <article class="group grid gap-4 rounded-2xl border border-forest/10 bg-paper p-5 transition hover:border-forest/25 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center">
+            <span class="font-display text-3xl text-coral">02</span><div><h3 class="font-bold text-forest">Формула ½ + ¼ + ¼</h3><p class="mt-1 text-sm text-ink/55">Собираем основу без весов и таблиц</p></div><span class="text-xs font-semibold text-forest/40">15 минут</span>
+          </article>
+          <article class="group grid gap-4 rounded-2xl border border-forest/10 bg-paper p-5 transition hover:border-forest/25 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center">
+            <span class="font-display text-3xl text-coral">03</span><div><h3 class="font-bold text-forest">Завтрак, перекусы и напитки</h3><p class="mt-1 text-sm text-ink/55">Адаптируем метод под весь день</p></div><span class="text-xs font-semibold text-forest/40">12 минут</span>
+          </article>
+          <article class="group grid gap-4 rounded-2xl border border-forest/10 bg-paper p-5 transition hover:border-forest/25 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center">
+            <span class="font-display text-3xl text-coral">04</span><div><h3 class="font-bold text-forest">Конструктор покупок и меню</h3><p class="mt-1 text-sm text-ink/55">Запас продуктов и 30+ сочетаний</p></div><span class="text-xs font-semibold text-forest/40">20 минут</span>
+          </article>
+          <article class="group grid gap-4 rounded-2xl border border-forest/10 bg-paper p-5 transition hover:border-forest/25 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center">
+            <span class="font-display text-3xl text-coral">05</span><div><h3 class="font-bold text-forest">Ресторан, доставка, поездки</h3><p class="mt-1 text-sm text-ink/55">Баланс в реальной жизни, а не только дома</p></div><span class="text-xs font-semibold text-forest/40">10 минут</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="bg-sage py-20 sm:py-24">
+        <div class="mx-auto max-w-6xl px-5 text-center sm:px-8">
+          <p class="text-sm font-bold uppercase tracking-[.18em] text-forest/55">После курса вы сможете</p>
+          <div class="mt-10 grid gap-6 text-left md:grid-cols-3">
+            <div class="border-l border-forest/20 pl-5"><p class="font-display text-2xl font-semibold text-forest">Собирать еду без сомнений</p><p class="mt-3 text-sm leading-6 text-forest/60">Понимать, чего не хватает на тарелке, одним взглядом.</p></div>
+            <div class="border-l border-forest/20 pl-5"><p class="font-display text-2xl font-semibold text-forest">Насыщаться надолго</p><p class="mt-3 text-sm leading-6 text-forest/60">Уменьшить хаотичные перекусы благодаря полноценным приёмам пищи.</p></div>
+            <div class="border-l border-forest/20 pl-5"><p class="font-display text-2xl font-semibold text-forest">Есть гибко и спокойно</p><p class="mt-3 text-sm leading-6 text-forest/60">Применять систему к любимой еде без деления продуктов на плохие и хорошие.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="signup" class="relative overflow-hidden bg-forest py-20 text-paper sm:py-28">
+        <div class="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-coral/20 blur-3xl"></div>
+        <div class="relative mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_.85fr] lg:items-center">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[.18em] text-sage">Начните сегодня</p>
+            <h2 class="mt-4 max-w-xl font-display text-4xl font-semibold tracking-[-.035em] sm:text-5xl">Ваша сбалансированная тарелка — уже на следующем приёме пищи</h2>
+            <div class="mt-8 flex items-end gap-3">
+              <span class="font-display text-5xl font-semibold text-white">690 ₴</span>
+              <span class="pb-1 text-sm text-paper/50">один платёж</span>
+            </div>
+            <ul class="mt-7 grid gap-3 text-sm text-paper/75 sm:grid-cols-2">
+              <li class="flex gap-2"><span class="text-sage">✓</span> Практический PDF-курс</li>
+              <li class="flex gap-2"><span class="text-sage">✓</span> Доступ навсегда</li>
+              <li class="flex gap-2"><span class="text-sage">✓</span> Чек-лист покупок</li>
+              <li class="flex gap-2"><span class="text-sage">✓</span> Шаблон меню на неделю</li>
+            </ul>
+          </div>
+
+          <form id="registration-form" class="rounded-[2rem] bg-paper p-6 text-ink shadow-soft sm:p-8">
+            <div class="mb-6">
+              <p class="text-xl font-bold text-forest">Регистрация на курс</p>
+              <p class="mt-1 text-sm text-ink/50">Заполните данные для доступа к материалам</p>
+            </div>
+            <div class="space-y-4">
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[.1em] text-forest/55">Ваше имя</span>
+                <input name="name" type="text" autocomplete="name" required minlength="2" placeholder="Анна" class="h-12 w-full rounded-xl border border-forest/15 bg-white px-4 text-sm outline-none transition placeholder:text-ink/25 focus:border-forest/45 focus:ring-4 focus:ring-sage/60" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[.1em] text-forest/55">Email</span>
+                <input name="email" type="email" autocomplete="email" required placeholder="you@example.com" class="h-12 w-full rounded-xl border border-forest/15 bg-white px-4 text-sm outline-none transition placeholder:text-ink/25 focus:border-forest/45 focus:ring-4 focus:ring-sage/60" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[.1em] text-forest/55">Телефон</span>
+                <input name="phone" type="tel" autocomplete="tel" required placeholder="+380 00 000 00 00" class="h-12 w-full rounded-xl border border-forest/15 bg-white px-4 text-sm outline-none transition placeholder:text-ink/25 focus:border-forest/45 focus:ring-4 focus:ring-sage/60" />
+              </label>
+            </div>
+            <label class="mt-4 flex cursor-pointer items-start gap-3 text-xs leading-5 text-ink/45">
+              <input type="checkbox" required class="mt-1 accent-[#173f35]" />
+              <span>Я согласен(-на) на обработку данных и получение материалов курса</span>
+            </label>
+            <button type="submit" class="cta-glow mt-6 flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-coral px-6 font-bold text-white transition hover:bg-[#df5437] focus:outline-none focus:ring-4 focus:ring-coral/25">
+              Купить курс за 690 ₴
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </button>
+            <p class="mt-4 text-center text-[11px] leading-4 text-ink/35">Демо-форма: платёжный сервис подключается отдельно. Нажимая кнопку, вы увидите подтверждение регистрации.</p>
           </form>
-        </header>
+        </div>
+      </section>
 
-        <div class="px-6 py-6 sm:px-9 sm:py-8">
-          <div class="mb-5 flex items-center justify-between gap-3">
-            <div id="filters" class="flex items-center gap-1 rounded-xl bg-zinc-100 p-1" aria-label="Фильтр задач">
-              <button data-filter="all" class="filter-button rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-zinc-900 shadow-sm">Все</button>
-              <button data-filter="active" class="filter-button rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:text-zinc-900">В работе</button>
-              <button data-filter="done" class="filter-button rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:text-zinc-900">Готово</button>
-            </div>
-            <p id="task-count" class="text-xs font-medium text-zinc-400" aria-live="polite"></p>
-          </div>
-
-          <ul id="task-list" class="space-y-2" aria-label="Список задач"></ul>
-
-          <div id="empty-state" class="hidden py-14 text-center">
-            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-dashed border-zinc-300 text-zinc-400">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            </div>
-            <p id="empty-title" class="text-sm font-semibold text-zinc-700">Задач пока нет</p>
-            <p id="empty-copy" class="mt-1 text-sm text-zinc-400">Добавьте первую задачу выше</p>
-          </div>
+      <section id="faq" class="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="text-center">
+          <p class="text-sm font-bold uppercase tracking-[.18em] text-coral">FAQ</p>
+          <h2 class="mt-4 font-display text-4xl font-semibold text-forest">Остались вопросы?</h2>
+        </div>
+        <div class="mt-10 divide-y divide-forest/10 border-y border-forest/10">
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-forest">Нужно ли считать калории?<span class="text-xl font-normal transition group-open:rotate-45">+</span></summary>
+            <p class="mt-3 pr-10 text-sm leading-6 text-ink/55">Нет. Метод основан на визуальных пропорциях и подходит для повседневного питания без кухонных весов.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-forest">Подойдёт ли курс вегетарианцам?<span class="text-xl font-normal transition group-open:rotate-45">+</span></summary>
+            <p class="mt-3 pr-10 text-sm leading-6 text-ink/55">Да. Внутри есть растительные источники белка и примеры тарелок с бобовыми, тофу и темпе.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-forest">Это медицинская программа?<span class="text-xl font-normal transition group-open:rotate-45">+</span></summary>
+            <p class="mt-3 pr-10 text-sm leading-6 text-ink/55">Нет, это образовательный материал для взрослых без специальных медицинских ограничений. При заболеваниях, беременности или назначенной диете обсудите изменения с врачом.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-forest">Когда я получу курс?<span class="text-xl font-normal transition group-open:rotate-45">+</span></summary>
+            <p class="mt-3 pr-10 text-sm leading-6 text-ink/55">После подключения оплаты PDF можно выдавать автоматически. Сейчас готовый файл курса находится рядом со страницей проекта.</p>
+          </details>
         </div>
       </section>
     </main>
 
+    <footer class="border-t border-forest/10 px-5 py-8">
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 text-xs text-ink/45 sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 Баланс. Образовательный проект о повседневном питании.</p>
+        <p>Материалы не заменяют консультацию врача или диетолога.</p>
+      </div>
+    </footer>
+
+    <a href="#signup" class="fixed bottom-4 left-4 right-4 z-40 flex min-h-12 items-center justify-center rounded-full bg-coral px-6 text-sm font-bold text-white shadow-button md:hidden">Купить курс · 690 ₴</a>
+
+    <div id="success-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-forest/70 p-5 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="success-title">
+      <div class="w-full max-w-md rounded-[2rem] bg-paper p-8 text-center shadow-soft">
+        <div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-sage text-2xl text-forest">✓</div>
+        <h2 id="success-title" class="mt-5 font-display text-3xl font-semibold text-forest">Вы зарегистрированы!</h2>
+        <p class="mt-3 text-sm leading-6 text-ink/55">Демо-заявка сохранена в этом браузере. Для приёма реальных платежей подключите платёжную систему к обработчику формы.</p>
+        <a href="balanced-plate-course.pdf" class="mt-6 flex min-h-12 items-center justify-center rounded-full bg-forest px-5 text-sm font-bold text-white" download>Открыть PDF-курс</a>
+        <button id="close-modal" type="button" class="mt-3 text-sm font-semibold text-ink/45 hover:text-ink">Закрыть</button>
+      </div>
+    </div>
+
     <script>
-      const STORAGE_KEY = "minimal-todo-tasks";
-      const form = document.querySelector("#task-form");
-      const input = document.querySelector("#task-input");
-      const list = document.querySelector("#task-list");
-      const count = document.querySelector("#task-count");
-      const emptyState = document.querySelector("#empty-state");
-      const filters = document.querySelector("#filters");
-      let activeFilter = "all";
-      let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-
-      document.querySelector("#today").textContent = new Intl.DateTimeFormat("ru-RU", {
-        weekday: "long", day: "numeric", month: "long"
-      }).format(new Date());
-
-      const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-
-      function filteredTasks() {
-        if (activeFilter === "active") return tasks.filter((task) => !task.done);
-        if (activeFilter === "done") return tasks.filter((task) => task.done);
-        return tasks;
-      }
-
-      function render() {
-        const visibleTasks = filteredTasks();
-        list.innerHTML = "";
-
-        visibleTasks.forEach((task) => {
-          const item = document.createElement("li");
-          item.className = "task-row group flex items-center gap-3 rounded-2xl border border-zinc-100 bg-white px-4 py-3 transition hover:border-zinc-200 hover:bg-zinc-50/70";
-          item.innerHTML = `
-            <label class="flex min-w-0 flex-1 cursor-pointer items-center gap-3">
-              <input class="sr-only" type="checkbox" ${task.done ? "checked" : ""} data-action="toggle" data-id="${task.id}" />
-              <span class="checkbox-ui flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-zinc-300 bg-white transition">
-                <svg class="check-icon text-white" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
-              </span>
-              <span class="truncate text-sm font-medium transition ${task.done ? "text-zinc-400 line-through" : "text-zinc-800"}"></span>
-            </label>
-            <button data-action="remove" data-id="${task.id}" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-300 opacity-60 transition hover:bg-red-50 hover:text-red-500 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-200 sm:opacity-0 sm:group-hover:opacity-100" aria-label="Удалить задачу">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-            </button>`;
-          item.querySelector("span.truncate").textContent = task.title;
-          list.appendChild(item);
-        });
-
-        const activeCount = tasks.filter((task) => !task.done).length;
-        count.textContent = `${activeCount} ${pluralize(activeCount, ["задача", "задачи", "задач"])} осталось`;
-        emptyState.classList.toggle("hidden", visibleTasks.length !== 0);
-
-        const emptyMessages = {
-          all: ["Задач пока нет", "Добавьте первую задачу выше"],
-          active: ["Всё выполнено", "Можно немного отдохнуть"],
-          done: ["Готовых задач нет", "Отмеченные задачи появятся здесь"],
-        };
-        document.querySelector("#empty-title").textContent = emptyMessages[activeFilter][0];
-        document.querySelector("#empty-copy").textContent = emptyMessages[activeFilter][1];
-      }
-
-      function pluralize(number, words) {
-        const mod10 = number % 10;
-        const mod100 = number % 100;
-        if (mod10 === 1 && mod100 !== 11) return words[0];
-        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return words[1];
-        return words[2];
-      }
+      const form = document.querySelector("#registration-form");
+      const modal = document.querySelector("#success-modal");
+      const closeModal = document.querySelector("#close-modal");
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const title = input.value.trim();
-        if (!title) {
-          input.focus();
-          return;
-        }
-        tasks.unshift({ id: crypto.randomUUID(), title, done: false });
-        input.value = "";
-        activeFilter = "all";
-        updateFilterButtons();
-        save();
-        render();
-        input.focus();
+        if (!form.reportValidity()) return;
+        const registration = Object.fromEntries(new FormData(form).entries());
+        localStorage.setItem("balanced-plate-registration", JSON.stringify({ ...registration, createdAt: new Date().toISOString() }));
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        closeModal.focus();
       });
 
-      document.querySelector("#cancel-button").addEventListener("click", () => {
-        input.value = "";
-        input.blur();
-      });
-
-      list.addEventListener("click", (event) => {
-        const control = event.target.closest("[data-action]");
-        if (!control) return;
-        const id = control.dataset.id;
-        if (control.dataset.action === "remove") tasks = tasks.filter((task) => task.id !== id);
-        if (control.dataset.action === "toggle") {
-          tasks = tasks.map((task) => task.id === id ? { ...task, done: !task.done } : task);
-        }
-        save();
-        render();
-      });
-
-      filters.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-filter]");
-        if (!button) return;
-        activeFilter = button.dataset.filter;
-        updateFilterButtons();
-        render();
-      });
-
-      function updateFilterButtons() {
-        document.querySelectorAll(".filter-button").forEach((button) => {
-          const selected = button.dataset.filter === activeFilter;
-          button.classList.toggle("bg-white", selected);
-          button.classList.toggle("text-zinc-900", selected);
-          button.classList.toggle("shadow-sm", selected);
-          button.classList.toggle("text-zinc-500", !selected);
-          button.setAttribute("aria-pressed", selected);
-        });
+      function hideModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
       }
 
-      updateFilterButtons();
-      render();
+      closeModal.addEventListener("click", hideModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) hideModal();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.classList.contains("hidden")) hideModal();
+      });
     </script>
   </body>
 </html>
