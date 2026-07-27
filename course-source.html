@@ -8,54 +8,54 @@
     @page { size: A4; margin: 0; }
     * { box-sizing: border-box; }
     html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    body { margin: 0; background: #d9d8d2; color: #18211e; font-family: Arial, Helvetica, sans-serif; }
-    .page { position: relative; width: 210mm; height: 297mm; margin: 10mm auto; overflow: hidden; background: #fffdf8; page-break-after: always; }
+    body { margin: 0; background: #e9dde4; color: #352330; font-family: Arial, Helvetica, sans-serif; }
+    .page { position: relative; width: 210mm; height: 297mm; margin: 10mm auto; overflow: hidden; background: #fffafd; page-break-after: always; }
     .page:last-child { page-break-after: auto; }
     .pad { padding: 18mm 18mm 15mm; }
-    .cream { background: #f4f1e9; }
-    .forest { background: #173f35; color: #fffdf8; }
-    .sage { background: #dce6d7; }
+    .cream { background: #fff4f8; }
+    .forest { background: #572044; color: #fffafd; }
+    .sage { background: #f7dce9; }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2 { font-family: Georgia, "Times New Roman", serif; color: #173f35; }
-    .forest h1, .forest h2 { color: #fffdf8; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; color: #572044; }
+    .forest h1, .forest h2 { color: #fffafd; }
     h1 { font-size: 38pt; line-height: 1.02; letter-spacing: -1.7px; }
     h2 { margin-bottom: 8mm; font-size: 27pt; line-height: 1.08; letter-spacing: -1px; }
-    h3 { margin-bottom: 2mm; color: #173f35; font-size: 12pt; }
+    h3 { margin-bottom: 2mm; color: #572044; font-size: 12pt; }
     p, li { font-size: 9.5pt; line-height: 1.55; }
     .lead { font-size: 13pt; line-height: 1.45; }
     .muted { color: #65706c; }
-    .eyebrow { margin-bottom: 4mm; color: #f16445; font-size: 8pt; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
-    .forest .eyebrow { color: #dce6d7; }
+    .eyebrow { margin-bottom: 4mm; color: #e84d8a; font-size: 8pt; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    .forest .eyebrow { color: #f7dce9; }
     .page-number { position: absolute; right: 14mm; bottom: 9mm; color: #87918d; font-size: 8pt; }
     .brand { position: absolute; left: 14mm; bottom: 9mm; color: #87918d; font-size: 8pt; font-weight: bold; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-    .card { padding: 5mm; border: 1px solid rgba(23,63,53,.13); border-radius: 5mm; background: #fff; }
-    .card.sage { background: #dce6d7; }
-    .card.coral { border: none; background: #f16445; color: #fff; }
-    .card.forest { border: none; background: #173f35; color: #fff; }
-    .number { display: inline-grid; width: 8mm; height: 8mm; margin-bottom: 3mm; place-items: center; border-radius: 50%; background: #173f35; color: #fff; font-size: 8pt; font-weight: bold; }
+    .card { padding: 5mm; border: 1px solid rgba(87,32,68,.13); border-radius: 5mm; background: #fff; }
+    .card.sage { background: #f7dce9; }
+    .card.coral { border: none; background: #e84d8a; color: #fff; }
+    .card.forest { border: none; background: #572044; color: #fff; }
+    .number { display: inline-grid; width: 8mm; height: 8mm; margin-bottom: 3mm; place-items: center; border-radius: 50%; background: #572044; color: #fff; font-size: 8pt; font-weight: bold; }
     .checklist { list-style: none; padding: 0; }
     .checklist li { position: relative; margin-bottom: 3mm; padding-left: 8mm; }
-    .checklist li::before { position: absolute; left: 0; top: .4mm; content: "✓"; display: grid; width: 5mm; height: 5mm; place-items: center; border-radius: 50%; background: #dce6d7; color: #173f35; font-size: 7pt; font-weight: bold; }
+    .checklist li::before { position: absolute; left: 0; top: .4mm; content: "✓"; display: grid; width: 5mm; height: 5mm; place-items: center; border-radius: 50%; background: #f7dce9; color: #572044; font-size: 7pt; font-weight: bold; }
     table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
-    th { padding: 3mm; background: #173f35; color: #fff; text-align: left; }
+    th { padding: 3mm; background: #572044; color: #fff; text-align: left; }
     td { padding: 3mm; border-bottom: 1px solid #dce1dd; vertical-align: top; line-height: 1.4; }
-    tr:nth-child(even) td { background: #f4f1e9; }
-    .note { padding: 4mm 5mm; border-left: 3px solid #f16445; background: #f7e7e1; font-size: 8.5pt; line-height: 1.5; }
-    .plate { position: relative; width: 115mm; height: 115mm; margin: 7mm auto; border: 3mm solid #fff; border-radius: 50%; overflow: hidden; box-shadow: 0 6mm 12mm rgba(23,63,53,.14); }
-    .plate .veg { position: absolute; inset: 0 50% 0 0; display: grid; place-items: center; background: #9cb795; color: #173f35; }
-    .plate .protein { position: absolute; inset: 0 0 50% 50%; display: grid; place-items: center; background: #f0a18e; color: #713424; }
-    .plate .carbs { position: absolute; inset: 50% 0 0 50%; display: grid; place-items: center; background: #e9d39f; color: #5e4c21; }
+    tr:nth-child(even) td { background: #fff4f8; }
+    .note { padding: 4mm 5mm; border-left: 3px solid #e84d8a; background: #fde8f1; font-size: 8.5pt; line-height: 1.5; }
+    .plate { position: relative; width: 115mm; height: 115mm; margin: 7mm auto; border: 3mm solid #fff; border-radius: 50%; overflow: hidden; box-shadow: 0 6mm 12mm rgba(87,32,68,.14); }
+    .plate .veg { position: absolute; inset: 0 50% 0 0; display: grid; place-items: center; background: #f1c8dc; color: #572044; }
+    .plate .protein { position: absolute; inset: 0 0 50% 50%; display: grid; place-items: center; background: #e84d8a; color: #fff; }
+    .plate .carbs { position: absolute; inset: 50% 0 0 50%; display: grid; place-items: center; background: #e7d8f2; color: #512c65; }
     .plate strong { max-width: 35mm; text-align: center; font-size: 11pt; line-height: 1.3; }
     .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .cover-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(23,63,53,.96) 0%, rgba(23,63,53,.84) 47%, rgba(23,63,53,.1) 78%); }
+    .cover-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(87,32,68,.97) 0%, rgba(87,32,68,.86) 47%, rgba(87,32,68,.12) 78%); }
     .cover-copy { position: relative; z-index: 2; width: 120mm; padding: 24mm 0 0 18mm; color: #fff; }
     .cover-copy h1 { margin: 14mm 0 7mm; color: #fff; font-size: 44pt; }
-    .pill { display: inline-block; padding: 2.5mm 4mm; border-radius: 20mm; background: #f16445; color: #fff; font-size: 8pt; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+    .pill { display: inline-block; padding: 2.5mm 4mm; border-radius: 20mm; background: #e84d8a; color: #fff; font-size: 8pt; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
     .formula { display: flex; align-items: center; justify-content: space-between; margin: 8mm 0; }
-    .formula span { display: grid; width: 41mm; height: 27mm; place-items: center; border-radius: 5mm; background: #dce6d7; color: #173f35; font-size: 12pt; font-weight: bold; text-align: center; }
-    .formula b { color: #f16445; font-size: 20pt; }
+    .formula span { display: grid; width: 41mm; height: 27mm; place-items: center; border-radius: 5mm; background: #f7dce9; color: #572044; font-size: 12pt; font-weight: bold; text-align: center; }
+    .formula b { color: #e84d8a; font-size: 20pt; }
     .lines { height: 8mm; border-bottom: 1px solid #b9c1bd; }
     @media print {
       body { background: transparent; }
@@ -70,7 +70,7 @@
     <div class="cover-copy">
       <span class="pill">Практичний курс</span>
       <h1>Баланс<br />на тарілці</h1>
-      <p class="lead" style="max-width:90mm;color:#dce6d7">Як складати повноцінну їжу без ваг, підрахунку калорій і суворих заборон</p>
+      <p class="lead" style="max-width:90mm;color:#f7dce9">Як складати повноцінну їжу без ваг, підрахунку калорій і суворих заборон</p>
       <p style="margin-top:70mm;font-size:9pt;color:rgba(255,255,255,.65)">Посібник для повсякденного життя · 2026</p>
     </div>
   </section>
@@ -186,7 +186,7 @@
       <li>Ви відчуваєте фізичний голод — це вже достатня причина.</li>
     </ul>
     <div class="card forest" style="margin-top:7mm">
-      <h3 style="color:#dce6d7">Формула ситного перекусу</h3>
+      <h3 style="color:#f7dce9">Формула ситного перекусу</h3>
       <p style="margin:0">Оберіть 2 компоненти: <b>вуглеводи або фрукт + білок чи жир.</b><br />Приклади: яблуко + горіхи; хлібці + кисломолочний сир; банан + йогурт; овочі + хумус.</p>
     </div>
     <p class="note" style="margin-top:7mm"><b>Кава — напій, а не прийом їжі.</b> Якщо зранку немає апетиту, почніть із невеликого варіанта й поспостерігайте, як це впливає на вечірній голод.</p>
@@ -313,7 +313,7 @@
       </tbody>
     </table>
     <div class="card forest" style="margin-top:8mm">
-      <h3 style="color:#dce6d7">Правило одного рішення</h3>
+      <h3 style="color:#f7dce9">Правило одного рішення</h3>
       <p style="margin:0">Не намагайтеся одночасно обрати «найкорисніше», мінімальну калорійність та ідеальний розмір порції. Запитайте: <b>«Як зробити цей прийом їжі трохи повноціннішим?»</b></p>
     </div>
     <span class="brand">БАЛАНС.</span><span class="page-number">09</span>
@@ -370,17 +370,17 @@
     <p class="lead">Формула ½ + ¼ + ¼ показує співвідношення компонентів, але не визначає одну правильну кількість їжі для всіх.</p>
     <div class="grid-3" style="margin-top:8mm">
       <div class="card sage">
-        <p style="font-family:Georgia,serif;font-size:25pt;color:#173f35;margin-bottom:2mm">18–20 см</p>
+        <p style="font-family:Georgia,serif;font-size:25pt;color:#572044;margin-bottom:2mm">18–20 см</p>
         <h3>Мала тарілка</h3>
         <p style="margin:0">Може підійти для перекусу, невеликого сніданку або коли апетит нижчий, ніж зазвичай.</p>
       </div>
       <div class="card forest">
-        <p style="font-family:Georgia,serif;font-size:25pt;color:#dce6d7;margin-bottom:2mm">22–25 см</p>
+        <p style="font-family:Georgia,serif;font-size:25pt;color:#f7dce9;margin-bottom:2mm">22–25 см</p>
         <h3 style="color:white">Основна тарілка</h3>
         <p style="margin:0">Зручний стартовий орієнтир для обіду чи вечері. Метод CDC/ADA часто демонструють на тарілці близько 9 дюймів — приблизно 23 см.</p>
       </div>
       <div class="card">
-        <p style="font-family:Georgia,serif;font-size:25pt;color:#f16445;margin-bottom:2mm">26+ см</p>
+        <p style="font-family:Georgia,serif;font-size:25pt;color:#e84d8a;margin-bottom:2mm">26+ см</p>
         <h3>Велика тарілка</h3>
         <p style="margin:0">Пропорції залишаються тими самими, але не обов’язково заповнювати тарілку до країв.</p>
       </div>
@@ -420,7 +420,7 @@
       </tbody>
     </table>
     <div class="card forest" style="margin-top:8mm">
-      <h3 style="color:#dce6d7">Не плутайте непереносимість та алергію</h3>
+      <h3 style="color:#f7dce9">Не плутайте непереносимість та алергію</h3>
       <p style="margin:0">Непереносимість частіше пов’язана з травними симптомами. Набряк губ, язика чи горла, утруднене дихання або генералізована кропив’янка можуть бути ознаками тяжкої алергічної реакції та потребують невідкладної допомоги.</p>
     </div>
     <p class="muted" style="margin-top:6mm;font-size:8.5pt">Без підтвердженого діагнозу не починайте сувору безглютенову, безлактозну або low-FODMAP дієту самостійно: зайві обмеження можуть збіднити раціон.</p>
@@ -438,7 +438,7 @@
         <p style="margin-bottom:0"><b>Приклади:</b> йогурт і банан; тост із сиром; вівсянка; яйце з хлібом; кисломолочний сир із ягодами.</p>
       </div>
       <div class="card forest">
-        <h3 style="color:#dce6d7">Якщо є печія або рефлюкс</h3>
+        <h3 style="color:#f7dce9">Якщо є печія або рефлюкс</h3>
         <p>Намагайтеся завершити основний прийом їжі щонайменше за 3 години до того, як лягати. Після їжі залишайтеся у вертикальному положенні.</p>
         <p style="margin-bottom:0">Ваші тригери можуть відрізнятися: часто симптоми пов’язують із жирною чи гострою їжею, алкоголем, кавою, шоколадом, м’ятою, цитрусовими або томатами.</p>
       </div>
@@ -511,18 +511,18 @@
   <section class="page pad forest">
     <p class="eyebrow">Фінальна практика</p>
     <h2>Ваш особистий план</h2>
-    <p class="lead" style="color:#dce6d7">Оберіть зміни, які реально повторювати. Стале «достатньо добре» корисніше за рідкісний ідеал.</p>
+    <p class="lead" style="color:#f7dce9">Оберіть зміни, які реально повторювати. Стале «достатньо добре» корисніше за рідкісний ідеал.</p>
     <div class="grid-2" style="margin-top:9mm">
-      <div class="card" style="color:#18211e">
+      <div class="card" style="color:#352330">
         <h3>3 улюблені тарілки</h3>
         <div class="lines"></div><div class="lines"></div><div class="lines"></div>
       </div>
-      <div class="card" style="color:#18211e">
+      <div class="card" style="color:#352330">
         <h3>3 швидкі варіанти</h3>
         <div class="lines"></div><div class="lines"></div><div class="lines"></div>
       </div>
     </div>
-    <div class="card sage" style="margin-top:6mm;color:#18211e">
+    <div class="card sage" style="margin-top:6mm;color:#352330">
       <h3>Одна дія на цей тиждень</h3>
       <p class="muted">Наприклад: додавати овочі до обіду; тримати в морозилці овочеву суміш; не пропускати сніданок у робочі дні.</p>
       <div class="lines"></div><div class="lines"></div>
@@ -542,8 +542,8 @@
         </ul>
       </div>
     </div>
-    <p style="margin-top:16mm;font-family:Georgia,serif;font-size:21pt;line-height:1.3;color:#dce6d7">Баланс — це не пункт призначення.<br />Це спосіб піклуватися про себе щодня.</p>
-    <span class="brand" style="color:#dce6d7">БАЛАНС.</span><span class="page-number" style="color:#dce6d7">17</span>
+    <p style="margin-top:16mm;font-family:Georgia,serif;font-size:21pt;line-height:1.3;color:#f7dce9">Баланс — це не пункт призначення.<br />Це спосіб піклуватися про себе щодня.</p>
+    <span class="brand" style="color:#f7dce9">БАЛАНС.</span><span class="page-number" style="color:#f7dce9">17</span>
   </section>
 </body>
 </html>

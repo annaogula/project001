@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="theme-color" content="#fff4f8" />
     <meta name="description" content="Практичний мінікурс про збалансоване харчування без підрахунку калорій і суворих обмежень." />
     <title>Баланс на тарілці — практичний курс</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,20 +12,20 @@
         theme: {
           extend: {
             colors: {
-              cream: "#f4f1e9",
-              paper: "#fffdf8",
-              forest: "#173f35",
-              sage: "#dce6d7",
-              coral: "#f16445",
-              ink: "#18211e",
+              cream: "#fff4f8",
+              paper: "#fffafd",
+              forest: "#572044",
+              sage: "#f7dce9",
+              coral: "#e84d8a",
+              ink: "#352330",
             },
             fontFamily: {
               sans: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"],
               display: ["Lora", "Georgia", "serif"],
             },
             boxShadow: {
-              soft: "0 24px 70px -36px rgba(23, 63, 53, .35)",
-              button: "0 14px 28px -12px rgba(241, 100, 69, .7)",
+              soft: "0 24px 70px -36px rgba(87, 32, 68, .34)",
+              button: "0 14px 28px -12px rgba(232, 77, 138, .68)",
             },
           },
         },
@@ -34,14 +34,14 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap");
       * { -webkit-tap-highlight-color: transparent; }
-      body { background: #f4f1e9; }
+      body { background: #fff4f8; }
       .noise {
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
       }
       .cta-glow { animation: glow 2.2s ease-in-out infinite; }
       @keyframes glow {
-        0%, 100% { box-shadow: 0 14px 28px -12px rgba(241, 100, 69, .65); transform: translateY(0); }
-        50% { box-shadow: 0 18px 38px -9px rgba(241, 100, 69, .85); transform: translateY(-2px); }
+        0%, 100% { box-shadow: 0 14px 28px -12px rgba(232, 77, 138, .62); transform: translateY(0); }
+        50% { box-shadow: 0 18px 38px -9px rgba(232, 77, 138, .82); transform: translateY(-2px); }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -85,7 +85,7 @@
               Навчіться складати збалансовану тарілку за 5 хвилин — без ваг, підрахунку калорій і списків заборонених продуктів.
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a href="#signup" class="cta-glow inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-coral px-7 text-base font-bold text-white transition hover:bg-[#df5437] focus:outline-none focus:ring-4 focus:ring-coral/25">
+              <a href="#signup" class="cta-glow inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-coral px-7 text-base font-bold text-white transition hover:bg-[#d83a79] focus:outline-none focus:ring-4 focus:ring-coral/25">
                 Придбати курс за 690 ₴
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </a>
@@ -135,7 +135,7 @@
         </div>
         <div class="mt-12 grid gap-4 md:grid-cols-3">
           <article class="rounded-3xl border border-forest/10 bg-paper p-7">
-            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#f7ded7] text-coral">
+            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#fce1ec] text-coral">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             </span>
             <h3 class="text-lg font-bold text-forest">Немає часу</h3>
@@ -149,7 +149,7 @@
             <p class="mt-3 text-sm leading-6 text-ink/60">Білки, калорії, «можна» і «не можна» — інформації багато, а ясності дедалі менше.</p>
           </article>
           <article class="rounded-3xl border border-forest/10 bg-paper p-7">
-            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#eee3c8] text-forest">
+            <span class="mb-5 grid h-11 w-11 place-items-center rounded-2xl bg-[#eadff4] text-forest">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h10l2 6-7 12L5 9l2-6Z"/><path d="M5 9h14"/></svg>
             </span>
             <h3 class="text-lg font-bold text-forest">Зриви й почуття провини</h3>
@@ -264,10 +264,10 @@
               </label>
             </div>
             <label class="mt-4 flex cursor-pointer items-start gap-3 text-xs leading-5 text-ink/45">
-              <input type="checkbox" required class="mt-1 accent-[#173f35]" />
+              <input type="checkbox" required class="mt-1 accent-[#572044]" />
               <span>Я погоджуюся на обробку даних і отримання матеріалів курсу</span>
             </label>
-            <button type="submit" class="cta-glow mt-6 flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-coral px-6 font-bold text-white transition hover:bg-[#df5437] focus:outline-none focus:ring-4 focus:ring-coral/25">
+            <button type="submit" class="cta-glow mt-6 flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-coral px-6 font-bold text-white transition hover:bg-[#d83a79] focus:outline-none focus:ring-4 focus:ring-coral/25">
               Придбати курс за 690 ₴
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </button>
